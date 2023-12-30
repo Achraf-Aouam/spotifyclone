@@ -6,7 +6,18 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, children, disabled, type = "button", ...props }, ref) => {
     return (
-      <button type={type} className={twMerge("w-full rounded-full ")}></button>
+      <button
+        type={type}
+        className={twMerge(
+          "w-full rounded-full bg-green-500 border-transparent px-3 py-3 disabled:cursor-not-allowed hover:opacity-75 transition disabled:opacity-50 font-bold text-black",
+          className
+        )}
+        disabled={disabled}
+        ref={ref}
+        {...props}
+      >
+        {children}
+      </button>
     );
   }
 );
